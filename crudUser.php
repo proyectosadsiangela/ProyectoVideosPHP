@@ -17,20 +17,28 @@
 	}
 
 	function crearUsuario($query){
-		$usuario =$_POST['usuario'];
-		$contraseña = $_POST['contraseña'];
-		$nombres = $_POST['Nombres'];
-		$apellidouno = $_POST['Apellidouno'];
-		$apellidodos = $_POST['Apellidodos'];
-		$direccion = $_POST['Direccion'];
-		$telefono = $_POST['Telefono'];
-		$estado = $_POST['Estado'];
+		/* Proteccion de Datos */
+				$params = array(
+			':usuario'=> $_POST['usuario'],
+			':contrasena'=> $_POST['contrasena'],
+			':nombres' => $_POST['nombres'],
+			':apellidouno' => $_POST['apellidouno'],
+			':apellidodos' => $_POST['apellidodos'],
+			':direccion' => $_POST['direccion'],
+			':telefono' => $_POST['telefono'],
+			':estado' => $_POST['estado'],
+		
+            );
 
-       // $query= "INSERT INTO Usuarios VALUES('".$nombres."', '".$apellidouno."','".$apellidodos."','".$direccion."','".$telefono."','".$estado."')";
+		
+		/* Preparamos el query apartir del array $params*/
+		$query = 'INSERT INTO Usuarios 
+					(Nombres, Apellidos, Direccion, Telefono, Estado) 
+				VALUES 
+					(:nombres,:apellidos,:direccion,:telefono,:estado)';
 
-		$query = "INSERT INTO Usuarios (Usuario,Contrasena,Nombres, Apellidouno,Apellidodos, Direccion, Telefono, Estado) VALUES ('".$usuario."','".$contrasena."',".$nombres."', '".$apellidouno."','".$apellidodos."','".$direccion."','".$telefono."','".$estado."')";
-
-		$result = excuteQuery("blogs", "database/", $query);
+		/* Ejecutamos el query con los parametros */
+		$result = excuteQuery("Usuarios","", $query, $params);
 		if ($result > 0){
 			header('Location: viewUsers.php?result=true');
 		}else{
@@ -71,18 +79,31 @@
 	}
 
 	function updateUser (){
+        
+		/* Proteccion de Datos */
+		$params = array(
+			':idUser' => $_SESSION['idUser'],
+			':Nombres' => $_POST['nombres'],
+			':Apellidouno' => $_POST['apellidouno'],
+			':Apellidodos' => $_POST['apellidodos'],
+			':Direccion' => $_POST['direccion'],
+			':Telefono' => $_POST['telefono'],
+			':Estado' => $_POST['estado'],
+		);
 
-		$idUser = $_SESSION['idUser'];
-		$nombres = $_POST['Nombres'];
-	    $apellidouno = $_POST['Apellidouno'];
-		$apellidodos = $_POST['Apellidodos'];
-		$direccion = $_POST['Direccion'];
-		$telefono = $_POST['Telefono'];
-		$estado = $_POST['Estado'];
+		/* Preparamos el query apartir del array $params*/
+		$query ='UPDATE Usuarios SET
+					Nombres = :nombres,
+					Apellidouno = :apellidouno,
+					Apellidodos = :apellidodos,
+					Direccion = :direccion,
+					Telefono = :telefono,
+					Estado = :estado  
+				 WHERE idUsuario = :idUser;
+				';
 
-		$query = "UPDATE Usuarios SET Nombres = '".$nombres."', Apellidos = '".$apellidouno."','".$apellidodos."', Direccion = '".$direccion."', Telefono = '".$telefono."', Estado = '".$estado."'  WHERE idUsuario = '".$idUser."';";
-
-		$result = excuteQuery("blogs", "database/", $query);
+		//Ejecutamos el query		
+		$result = excuteQuery("blogs", "database/",,$query $params);
 		if ($result > 0){
 			unset($_SESSION['idUser']);
 			$_SESSION['idUser'] = NULL;
@@ -95,12 +116,21 @@
 	function deleteUser (){
 
 		$idUser = $_GET['id'];
-		$query = "DELETE FROM Usuarios WHERE idUsuario ='".$idUser."';";
-		$result = excuteQuery("blogs", "database/", $query);
+
+		/* Proteccion de Datos */
+		$params = array(
+			':id' => $_GET['id'],
+		);
+
+		/* Preparamos el query apartir del array $params*/
+		$query ='DELETE FROM Usuarios
+				 WHERE idUsuario = :id;';
+
+		$result = excuteQuery("Usuarios", "", $query, $params);
 		if ($result > 0){
 			header('Location: viewUsers.php?result=true');
 		}else{
-			header('Location: addUser.php?result=false');
+			header('Location: viewUser.php?result=false');
 		}
 	}
 
