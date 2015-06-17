@@ -1,6 +1,3 @@
-<?php
-require_once "crudUser.php"; 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,7 +128,7 @@ require_once "crudUser.php";
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-configusuarios"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -162,72 +159,42 @@ require_once "crudUser.php";
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Editar Usuario
+                            Agregar Usuario
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="viewUsers.php">Usuarios</a>
+                                <i class="fa fa-dashboard"></i>  <a href="viewconfigusuarios.php">Usuarios</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Editar
+                                <i class="fa fa-edit"></i>  Agregar
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 
-                <?php if(empty($_GET['id'])){ ?>
-                    <div class="alert alert-danger">
-                        <strong>Error!</strong> No se encontro un usuario al que aplicar esta accion.
-                    </div>
-                <?php }else{ ?>
-
-                <?php
-                    $_SESSION['idUser'] = $_GET['id'];
-                    $arrUser = getUser($_SESSION['idUser']);
-                ?>
                 <div class="row">
                     <div class="col-lg-8">
 
-                        <form role="form" id="frmUser" method="post" action="crudUser.php?action=update">
+                        <form role="form" id="frmUser" method="post" action="crudconfigusuarios.php?action=crear">
                             <div class="form-group">
-                                <label>Nombres</label>
-                                <input id="nombres" name="nombres" class="form-control" value="<?php echo $arrUser['Nombres']; ?>" placeholder="Nombres Usuario">
-                                <p class="help-block">Nombres completos del usuario.</p>
+                                <label>Usuario</label>
+                                <input id="usuario"  name="usuario" class="form-control" placeholder="">
+                                <p class="help-block">Digite su Usuario.</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Piel</label>
+                                <input id="piel"  name="piel" class="form-control" placeholder="">
+                                <p class="help-block">Digite color de piel.</p>
                             </div>
 
                             <div class="form-group">
-                                <label>Primer Apellido</label>
-                                <input id="apellidouno" name="apellidouno" class="form-control" value="<?php echo $arrUser['Apellidouno']; ?>" placeholder="Apellidouno Usuario">
-                                <p class="help-block">Primer Apellido.</p>
+                                <label>Respuestas</label>
+                                <input id="respuestas"  name="respuestas" class="form-control" placeholder="">
+                                <p class="help-block">Digite cualquier numero.</p>
                             </div>
 
-                            <div class="form-group">
-                                <label>Segundo Apellido</label>
-                                <input id="apellidodos" name="apellidodos" class="form-control" value="<?php echo $arrUser['Apellidodos']; ?>" placeholder="Apellidodos Usuario">
-                                <p class="help-block">Segundo Apellidos.</p>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Direccion</label>
-                                <input id="direccion" name="direccion" class="form-control" value="<?php echo $arrUser['Direccion']; ?>" placeholder="Direccion Usuario">
-                                <p class="help-block">Direccion donde vive el usuario.</p>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Telefono</label>
-                                <input id="telefono" name="telefono" class="form-control" value="<?php echo $arrUser['Telefono']; ?>" placeholder="31XXXXXXX">
-                                <p class="help-block">Telefono donde vive el usuario.</p>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Estado</label>
-                                <select id="estado" name="estado" class="form-control">
-                                    <option <?php echo ($arrUser['Estado'] == 'Activo') ? "selected='true'" : "" ?>value="Activo">Activo</option>
-                                    <option <?php echo ($arrUser['Estado'] == 'Inactivo') ? "selected='true'" : "" ?>value="Inactivo">Inactivo</option>
-                                </select>
-                            </div>
-
+                            
                             <button type="submit" class="btn btn-default">Enviar</button>
                             <button type="reset" class="btn btn-default">Limpiar</button>
 
@@ -236,10 +203,6 @@ require_once "crudUser.php";
                     </div>
 
                 </div>
-
-                <?php } ?>
-
-
                 <!-- /.row -->
 
             </div>

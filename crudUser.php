@@ -83,13 +83,15 @@
 		/* Proteccion de Datos */
 		$params = array(
 			':idUser' => $_SESSION['idUser'],
-			':Nombres' => $_POST['nombres'],
-			':Apellidouno' => $_POST['apellidouno'],
-			':Apellidodos' => $_POST['apellidodos'],
-			':Direccion' => $_POST['direccion'],
-			':Telefono' => $_POST['telefono'],
-			':Estado' => $_POST['estado'],
+			':nombres' => $_POST['nombres'],
+			':apellidouno' => $_POST['apellidouno'],
+			':apellidodos' => $_POST['apellidodos'],
+			':direccion' => $_POST['direccion'],
+			':telefono' => $_POST['telefono'],
+			':estado' => $_POST['estado'],
 		);
+
+		var_dump($_SESSION);
 
 		/* Preparamos el query apartir del array $params*/
 		$query ='UPDATE Usuarios SET
@@ -104,6 +106,7 @@
 
 		//Ejecutamos el query		
 		$result = excuteQuery("blogs", "database/",$query, $params);
+
 		if ($result > 0){
 			unset($_SESSION['idUser']);
 			$_SESSION['idUser'] = NULL;

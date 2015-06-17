@@ -16,37 +16,36 @@
 
 	}
 
-	function crearUsuario($query){
-		$usuario =$_POST['usuario'];
-		$piel= $_POST['contraseña'];
-		$respuestas = $_POST['Nombres'];
-		
+	function crearconfigusuarios(){
+		        $params = array(
+		    	    ':usuario'=> $_POST['usuario'],
+					':piel' => $_POST['piel'],
+					':respuestas' => $_POST['respuestas'],
+			);
 
        // $query= "INSERT INTO Usuarios VALUES('".$nombres."', '".$apellidouno."','".$apellidodos."','".$direccion."','".$telefono."','".$estado."')";
 
-		$query = "INSERT INTO Usuarios (Usuario,Contrasena,Nombres, Apellidouno,Apellidodos, Direccion, Telefono, Estado) VALUES ('".$usuario."','".$contrasena."',".$nombres."', '".$apellidouno."','".$apellidodos."','".$direccion."','".$telefono."','".$estado."')";
+		$query = 'INSERT INTO configusuarios (usuario,piel,respuestas) VALUES (:usuario,:piel,:respuestas)';
 
-		$result = excuteQuery("blogs", "database/", $query);
+
+		$result = excuteQuery("blogs","database/", $query, $params);
 		if ($result > 0){
-			header('Location: viewUsers.php?result=true');
+			header('Location: viewAutomoviles.php?result=true');
 		}else{
-			header('Location: addUser.php?result=false');
+			header('Location: addAutomovil.php?result=false');
 		}
 	}
 
-	function verUsuarios (){
-		$query = "SELECT * FROM Usuarios";
+	function verconfigusuarios (){
+		$query = "SELECT * FROM configusuarios";
 		$result = newQuery("blogs", "database/", $query);
 		if ($result != false || $result > 0){
 			foreach ($result as $value) {
 				echo "<tr>";
-				echo "    <td>".$value['idUsuario']."</td>";
-				echo "    <td>".$value['Nombres']."</td>";
-				echo "    <td>".$value['Apellidouno']."</td>";
-				echo "    <td>".$value['Apellidodos']."</td>";
-				echo "    <td>".$value['Direccion']."</td>";
-				echo "    <td>".$value['Telefono']."</td>";
-				echo "    <td>".$value['Estado']."</td>";
+				echo "    <td>".$value['idconfigusuarios']."</td>";
+				echo "    <td>".$value['usuario']."</td>";
+				echo "    <td>".$value['piel']."</td>";
+				echo "    <td>".$value['respuestas']."</td>";
 				echo "</tr>";
 			}
 		}else{
@@ -54,8 +53,8 @@
 		}
 	}
 
-	function getUser($id){
-		$query = "SELECT * FROM Usuarios WHERE idUsuario = '".$id."'";
+	function getconfigusuarios($id){
+		$query = "SELECT * FROM configusuarios WHERE idconfigusuarios = '".$id."'";
 		$result = newQuery("blogs", "database/", $query);
 		if ($result != false || $result > 0){
 			foreach ($result as $value) {
@@ -66,37 +65,43 @@
 		}
 	}
 
-	function updateUser (){
+	function updateconfigusuarios(){
 
-		$idUser = $_SESSION['idUser'];
-		$nombres = $_POST['Nombres'];
-	    $apellidouno = $_POST['Apellidouno'];
-		$apellidodos = $_POST['Apellidodos'];
-		$direccion = $_POST['Direccion'];
-		$telefono = $_POST['Telefono'];
-		$estado = $_POST['Estado'];
+		$params = array(
+			':idconfigusuarios' => $_SESSION['idconfigusuarios'],
+			':usuario' => $_POST['usuario'],
+			':piel' => $_POST['piel'],
+			':respuestas' => $_POST['respuestas'],
+		);
 
-		$query = "UPDATE Usuarios SET Nombres = '".$nombres."', Apellidos = '".$apellidouno."','".$apellidodos."', Direccion = '".$direccion."', Telefono = '".$telefono."', Estado = '".$estado."'  WHERE idUsuario = '".$idUser."';";
+		/* Preparamos el query apartir del array $params*/
+		$query ='UPDATE configusuarios SET
+					usuario = :usuario,
+					piel = :piel,
+					respuestas = :respuestas
+					WHERE idconfigusuarios = :idconfigusuarios;
+				';
 
-		$result = excuteQuery("blogs", "database/", $query);
+		//Ejecutamos el query		
+		$result = excuteQuery("blogs", "database/",$query, $params);
 		if ($result > 0){
-			unset($_SESSION['idUser']);
-			$_SESSION['idUser'] = NULL;
-			header('Location: viewUsers.php?result=true');
+			unset($_SESSION['idconfigusuarios']);
+			$_SESSION['idconfigusuarios'] = NULL;
+			header('Location: viewconfigusuarios.php?result=true');
 		}else{
-			header('Location: addUser.php?result=false');
+			header('Location: addconfigusuarios.php?result=false');
 		}
 	}
 
-	function deleteUser (){
+	function deleteconfigusuarios(){
 
-		$idUser = $_GET['id'];
-		$query = "DELETE FROM Usuarios WHERE idUsuario ='".$idUser."';";
-		$result = excuteQuery("blogs", "database/", $query);
+		$idconfigusuarios = $_GET['id'];
+		$query = "DELETE FROM configusuarios WHERE idconfigusuarios ='".$idconfigusuarios."';";
+		$result = excuteQuery("blogs", "database/", $query,$params);
 		if ($result > 0){
-			header('Location: viewUsers.php?result=true');
+			header('Location: viewconfigusuarios.php?result=true');
 		}else{
-			header('Location: addUser.php?result=false');
+			header('Location: addconfigusuarios.php?result=false');
 		}
 	}
 

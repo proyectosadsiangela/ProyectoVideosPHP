@@ -82,7 +82,9 @@
 		    	$result = $db->exec($query);
 		    }else{
 		    	/* Intentamos Ejecutar el Query */
+		    	var_dump($query);
 		    	$cmd = $db->prepare($query);
+
 		    	$result = $cmd->execute($params);
 		    	//$result = $db->exec($params);
 		    }
