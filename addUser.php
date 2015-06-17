@@ -183,7 +183,7 @@
                                 <p class="help-block">Digite su Usuario.</p>
                             </div>
                             <div class="form-group">
-                                <label>Nombres</label>
+                                <label>Contrasena</label>
                                 <input id="contrasena"  name="contrasena" class="form-control" placeholder="">
                                 <p class="help-block">Digite su Contraseña.</p>
                             </div>

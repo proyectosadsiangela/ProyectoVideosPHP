@@ -73,13 +73,19 @@
 		}
 	}
 
-	function excuteQuery ($nameDB = "blogs", $pathDB = "database/", $query){
+	function excuteQuery ($nameDB = "blogs", $pathDB = "database/", $query, $params=NULL){
 		try {
 			/* Creacion de la Base de Datos o Seleccion de la misma*/
 		    $db = new PDO("sqlite:".$pathDB.$nameDB.".sqlite"); //Creamos una conexion
-		    
-		    /* Intentamos Ejecutar el Query */
-		    $result = $db->exec($query);
+		    if ($params === NULL){
+				/* Intentamos Ejecutar el Query */
+		    	$result = $db->exec($query);
+		    }else{
+		    	/* Intentamos Ejecutar el Query */
+		    	$cmd = $db->prepare($query);
+		    	$result = $cmd->execute($params);
+		    	//$result = $db->exec($params);
+		    }
 
 		    $db = NULL; //Cerramos la conexion a la Base de datos.
 		    return ($result);
@@ -88,10 +94,10 @@
 		}
 	}
 
+	/* Funcion para ejecutar querys de tipo Selects */
 	function newQuery ($nameDB = "blogs", $pathDB = "database/", $query){
 		try {
 			/* Creacion de la Base de Datos o Seleccion de la misma*/
-
 		    $db = new PDO("sqlite:".$pathDB.$nameDB.".sqlite"); //Creamos una conexion
 		    
 		    /* Intentamos Ejecutar el Query */

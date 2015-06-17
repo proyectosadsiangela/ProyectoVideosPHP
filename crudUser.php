@@ -16,7 +16,7 @@
 
 	}
 
-	function crearUsuario($query){
+	function crearUsuario(){
 		/* Proteccion de Datos */
 				$params = array(
 			':usuario'=> $_POST['usuario'],
@@ -33,12 +33,12 @@
 		
 		/* Preparamos el query apartir del array $params*/
 		$query = 'INSERT INTO Usuarios 
-					(Nombres, Apellidos, Direccion, Telefono, Estado) 
+					(Usuario,Contrasena,Nombres, Apellidouno,Apellidodos, Direccion, Telefono, Estado) 
 				VALUES 
-					(:nombres,:apellidos,:direccion,:telefono,:estado)';
+					(:usuario,:contrasena,:nombres,:apellidouno,:apellidodos,:direccion,:telefono,:estado)';
 
 		/* Ejecutamos el query con los parametros */
-		$result = excuteQuery("Usuarios","", $query, $params);
+		$result = excuteQuery("blogs","database/", $query, $params);
 		if ($result > 0){
 			header('Location: viewUsers.php?result=true');
 		}else{
@@ -103,7 +103,7 @@
 				';
 
 		//Ejecutamos el query		
-		$result = excuteQuery("blogs", "database/",,$query $params);
+		$result = excuteQuery("blogs", "database/",$query, $params);
 		if ($result > 0){
 			unset($_SESSION['idUser']);
 			$_SESSION['idUser'] = NULL;
@@ -126,7 +126,7 @@
 		$query ='DELETE FROM Usuarios
 				 WHERE idUsuario = :id;';
 
-		$result = excuteQuery("Usuarios", "", $query, $params);
+		$result = excuteQuery("blogs", "database/", $query, $params);
 		if ($result > 0){
 			header('Location: viewUsers.php?result=true');
 		}else{
