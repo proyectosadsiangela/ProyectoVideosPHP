@@ -8,6 +8,10 @@
                         <a href="viewUsers.php"><i class="fa fa-fw fa-bar-chart-o"></i> Usuarios</a>
                     </li>
                     <li>
+                        <a href="viewconfigusuarios.php"><i class="fa fa-fw fa-table"></i> Configuracion de Usuaios</a>
+                    </li>
+                    </li>
+                    <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tablas</a>
                     </li>
                     <li>

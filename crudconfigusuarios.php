@@ -20,7 +20,7 @@
 		        $params = array(
 		    	    ':usuario'=> $_POST['usuario'],
 					':piel' => $_POST['piel'],
-					':respuestas' => $_POST['respuestas'],
+					':respuestas' => $_POST['respuestas']
 			);
 
        // $query= "INSERT INTO Usuarios VALUES('".$nombres."', '".$apellidouno."','".$apellidodos."','".$direccion."','".$telefono."','".$estado."')";
@@ -30,9 +30,9 @@
 
 		$result = excuteQuery("blogs","database/", $query, $params);
 		if ($result > 0){
-			header('Location: viewAutomoviles.php?result=true');
+			header('Location: crudconfigusuarios.php?result=true');
 		}else{
-			header('Location: addAutomovil.php?result=false');
+			header('Location: addconfigusuarios.php?result=false');
 		}
 	}
 

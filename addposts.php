@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agregar - Usuario</title>
+    <title>Agregar - Posts</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -128,7 +128,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-configusuarios"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-posts"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -159,11 +159,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Agregar Usuario
+                            Agregar Posts
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="viewconfigusuarios.php">Usuarios</a>
+                                <i class="fa fa-dashboard"></i>  <a href="viewposts.php">Posts</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-edit"></i>  Agregar
@@ -176,22 +176,52 @@
                 <div class="row">
                     <div class="col-lg-8">
 
-                        <form role="form" id="frmconfigusuarios" method="post" action="crudconfigusuarios.php?action=crear">
+                        <form role="form" id="frmposts" method="post" action="crudposts.php?action=crear">
                             <div class="form-group">
                                 <label>Usuario</label>
                                 <input id="usuario"  name="usuario" class="form-control" placeholder="">
                                 <p class="help-block">Digite su Usuario.</p>
                             </div>
                             <div class="form-group">
-                                <label>Piel</label>
-                                <input id="piel"  name="piel" class="form-control" placeholder="">
-                                <p class="help-block">Digite color de piel.</p>
+                                <label>Titulo</label>
+                                <input id="titulo"  name="titulo" class="form-control" placeholder="">
+                                <p class="help-block">Digite Titulo del Posts.</p>
                             </div>
 
                             <div class="form-group">
-                                <label>Respuestas</label>
-                                <input id="respuestas"  name="respuestas" class="form-control" placeholder="">
-                                <p class="help-block">Digite cualquier numero.</p>
+                                <label>Subtitulo</label>
+                                <input id="subtitulo"  name="subtitulo" class="form-control" placeholder="">
+                                <p class="help-block">Digite Subtitulo del Posts.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Icono</label>
+                                 <form name="formSimple" id="formSimple" enctype="multipart/form-data" method="post" action="subirBasico.php" />
+                                 <p><input type="file" size="32" name="mi_archivo" value="" /></p>
+                                <p class="button"><input type="hidden" name="action" value="simple" />
+                                <input type="submit" name="Submit" value="Subir" /></p>
+                                </form>
+                              <!--  <input type="file" id="icono"  name="icono" class="form-control" placeholder="">
+                                <p class="help-block">Seleccione un Icono.</p>
+                            </div>-->
+                             <div class="form-group">
+                                <label>texto</label>
+                                <input id="texto"  name="texto" class="form-control" placeholder="">
+                                <p class="help-block">Ingrese una Descripcion del posts.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Imagen</label>
+                                <input type="file" id="imagen"  name="imagen" class="form-control" placeholder="">
+                                <p class="help-block">Seleccione su foto.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Video</label>
+                                <input type="file" id="video"  name="video" class="form-control" placeholder="">
+                                <p class="help-block">Seleccione su video.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Sonido</label>
+                                <input type="file" id="sonido"  name="sonido" class="form-control" placeholder="">
+                                <p class="help-block">Seleccione Sonido.</p>
                             </div>
 
                             

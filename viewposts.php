@@ -1,3 +1,4 @@
+<?php require_once "crudposts.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +10,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agregar - Usuario</title>
+    <title>Admin - Usuarios</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/bootgrid-1.2.0/jquery.bootgrid.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
@@ -43,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
+                <a class="navbar-brand" href="index.html">Admin Users</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -57,9 +59,9 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>Diego Ojeada</strong>
                                         </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Ayer a las 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                     </div>
                                 </div>
@@ -72,31 +74,16 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>Diego Ojeda</strong>
                                         </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Ayer a las 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
+                            <a href="#">Leer Todos Los Mensajes</a>
                         </li>
                     </ul>
                 </li>
@@ -104,50 +91,51 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                            <a href="#">Alert Nueva<span class="label label-default">Alert Default</span></a>
                         </li>
                         <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                            <a href="#">Alert Nueva <span class="label label-primary">Alert Primary</span></a>
                         </li>
                         <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                            <a href="#">Alert Nueva <span class="label label-success">Alert Success</span></a>
                         </li>
                         <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                            <a href="#">Alert Nueva <span class="label label-info">Alert Info</span></a>
                         </li>
                         <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                            <a href="#">Alert Nueva <span class="label label-warning">Alert Warning</span></a>
                         </li>
                         <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                            <a href="#">Alert Nueva <span class="label label-danger">Alert Danger</span></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">View All</a>
+                            <a href="#">Ver Todas</a>
                         </li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-configusuarios"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-posts"></i> Diego Ojeda <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Mensajes</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Config</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Salir</a>
                         </li>
                     </ul>
                 </li>
             </ul>
 
-             <?php include_once "menu.php"; ?>
+            <?php include_once "menu.php"; ?>
+
             <!-- /.navbar-collapse -->
         </nav>
 
@@ -159,14 +147,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Agregar Usuario
+                            Configuracion <small>de Usuarios</small>
                         </h1>
                         <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="viewconfigusuarios.php">Usuarios</a>
-                            </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i>  Agregar
+                                <i class="fa fa-dashboard"></i> Principal
                             </li>
                         </ol>
                     </div>
@@ -174,35 +159,48 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-8">
-
-                        <form role="form" id="frmconfigusuarios" method="post" action="crudconfigusuarios.php?action=crear">
-                            <div class="form-group">
-                                <label>Usuario</label>
-                                <input id="usuario"  name="usuario" class="form-control" placeholder="">
-                                <p class="help-block">Digite su Usuario.</p>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-users fa-fw"></i> Posts</h3>
                             </div>
-                            <div class="form-group">
-                                <label>Piel</label>
-                                <input id="piel"  name="piel" class="form-control" placeholder="">
-                                <p class="help-block">Digite color de piel.</p>
+                            <div class="panel-body">
+                                
+                        <table id="grid-basic" class="table table-condensed table-hover table-striped" data-selection="true" data-multi-select="true" data-row-select="true">
+                            <thead>
+                                <tr>                                
+                                    <th data-column-id="id" data-align="left" data-width="40px" data-type="numeric" data-order="asc">ID</th>
+                                    <th data-column-id="utc" data-width="25%" data-align="left" data-header-align="center">Utc</th>
+                                    <th data-column-id="anio" data-width="25%">Anio</th>
+                                    <th data-column-id="mes" data-width="25%">Mes</th>
+                                    <th data-column-id="dia" data-width="25%">Dia</th>
+                                    <th data-column-id="hora" data-width="25%">Hora</th>
+                                    <th data-column-id="minuto" data-width="25%">Minuto</th>
+                                    <th data-column-id="segundo" data-width="25%">Segundo</th>
+                                    <th data-column-id="usuario" data-width="25%">Usario</th>
+                                    <th data-column-id="titulo" data-width="25%">Titulo</th>
+                                    <th data-column-id="subtitulo" data-width="25%">Subtitulo</th>
+                                    <th data-column-id="icono" data-width="25%">Icono</th>
+                                    <th data-column-id="texto" data-width="25%">Texto</th>
+                                    <th data-column-id="imagen" data-width="25%">Imagen</th>
+                                    <th data-column-id="video" data-width="25%">Video</th>
+                                    <th data-column-id="sonido" data-width="25%">Sonido</th>
+                                    <th data-column-id="actions" align="center" data-formatter="actions" data-width="100px">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php echo verposts(); ?>
+                            </tbody>
+                        </table>
+
                             </div>
-
-                            <div class="form-group">
-                                <label>Respuestas</label>
-                                <input id="respuestas"  name="respuestas" class="form-control" placeholder="">
-                                <p class="help-block">Digite cualquier numero.</p>
-                            </div>
-
-                            
-                            <button type="submit" class="btn btn-default">Enviar</button>
-                            <button type="reset" class="btn btn-default">Limpiar</button>
-
-                        </form>
-
+                        </div>
                     </div>
-
                 </div>
+                <a type="button" href="addposts.php" class="btn btn-primary pull-right"><i class="fa fa-plus fa-fw"></i> Agregar</a>
+
+                
+
                 <!-- /.row -->
 
             </div>
@@ -219,6 +217,28 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootgrid-1.2.0/jquery.bootgrid.js"></script>
+    <script src="js/bootgrid-1.2.0/jquery.bootgrid.fa.js"></script>
+
+    <script>
+
+        function init()
+        {
+            $("#grid-basic").bootgrid({
+                formatters: {
+                    "actions": function(column, row)
+                    {
+                        return "<a href=\"editposts.php?id="+row.id+"\"><i class='fa fa-pencil fa-fw'></i></a> "+
+                        " <a href=\"crudposts.php?id="+row.id+"&action=delete\"><i class='fa fa-minus-circle fa-fw'></i></a>";
+                    }
+                },
+                rowCount: [-1, 25, 50, 75]
+            });
+        }
+        
+        init();
+
+    </script>
 
 </body>
 

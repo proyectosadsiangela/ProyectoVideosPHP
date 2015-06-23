@@ -1,3 +1,6 @@
+<?php
+require_once "crudposts.php"; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agregar - Usuario</title>
+    <title>Agregar - Posts</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -159,42 +162,77 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Agregar Usuario
+                            Editar Posts
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="viewconfigusuarios.php">Usuarios</a>
+                                <i class="fa fa-dashboard"></i>  <a href="viewconfigusuarios.php">Posts</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i>  Agregar
+                                <i class="fa fa-edit"></i> Editar
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 
+                <?php if(empty($_GET['id'])){ ?>
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong> No se encontro un posts al que aplicar esta accion.
+                    </div>
+                <?php }else{ ?>
+
+                <?php
+                    $_SESSION['idposts'] = $_GET['id'];
+                    $arrposts = getposts($_SESSION['idposts']);
+                ?>
                 <div class="row">
                     <div class="col-lg-8">
 
-                        <form role="form" id="frmconfigusuarios" method="post" action="crudconfigusuarios.php?action=crear">
+                        <form role="form" id="frmposts" method="post" action="crudposts.php?action=update">
                             <div class="form-group">
                                 <label>Usuario</label>
-                                <input id="usuario"  name="usuario" class="form-control" placeholder="">
-                                <p class="help-block">Digite su Usuario.</p>
-                            </div>
-                            <div class="form-group">
-                                <label>Piel</label>
-                                <input id="piel"  name="piel" class="form-control" placeholder="">
-                                <p class="help-block">Digite color de piel.</p>
+                                <input id="usuario" name="usuario" class="form-control" value="<?php echo $arrposts['usuario']; ?>" placeholder="Usuario">
+                                <p class="help-block">Usuario.</p>
                             </div>
 
                             <div class="form-group">
-                                <label>Respuestas</label>
-                                <input id="respuestas"  name="respuestas" class="form-control" placeholder="">
-                                <p class="help-block">Digite cualquier numero.</p>
+                                <label>Titulo</label>
+                                <input id="titulo" name="titulo" class="form-control" value="<?php echo $arrposts['titulo']; ?>" placeholder="Titulo">
+                                <p class="help-block">Titulo</p>
                             </div>
 
-                            
+                            <div class="form-group">
+                                <label>Subtitulo</label>
+                                <input id="respuestas" name="respuestas" class="form-control" value="<?php echo $arrposts['subtitulo']; ?>" placeholder="Subtitulo">
+                                <p class="help-block">Subtitulo.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Icono</label>
+                                <input type="file" id="icono" name="icono" class="form-control" value="<?php echo $arrposts['icono']; ?>" placeholder="icono"><input id="sonido" name="sonido" class="form-control" value="">
+                                <p class="help-block">Icono.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Texto</label>
+                                <input id="texto" name="texto" class="form-control" value="<?php echo $arrposts['texto']; ?>" placeholder="Texto">
+                                <p class="help-block">Texto.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Imagen</label>
+                                <input type="file" id="imagen" name="imagen" class="form-control" value="<?php echo $arrposts['imagen']; ?>" placeholder="Imagen"><input id="imagen" name="imagen" class="form-control" value="">
+                                <p class="help-block">Imagen.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Video</label>
+                                <input type="file" id="video" name="video" class="form-control" value="<?php echo $arrposts['video']; ?>" placeholder="Video"><input id="video" name="video" class="form-control" value="">
+                                <p class="help-block">Video.</p>
+                            </div>
+                             <div class="form-group">
+                                <label>Sonido</label>
+                                <input type="file" id="sonido" name="sonido" class="form-control" value="<?php echo $arrposts['sonido']; ?>" placeholder="Sonido"><input id="sonido" name="sonido" class="form-control" value="">
+                                <p class="help-block">Sonido.</p>
+                            </div>
+
                             <button type="submit" class="btn btn-default">Enviar</button>
                             <button type="reset" class="btn btn-default">Limpiar</button>
 
@@ -203,6 +241,10 @@
                     </div>
 
                 </div>
+
+                <?php } ?>
+
+
                 <!-- /.row -->
 
             </div>
