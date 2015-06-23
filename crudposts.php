@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	//session_start();
 	require_once("install.php");
 		if (!empty($_REQUEST['action'])){
               	$accion = $_REQUEST['action'];
@@ -17,6 +17,9 @@
 	}
 
 	function crearposts(){
+		$nom = $archivoico = subirarchivo('icono');
+        $archivoico = ($archivoico === NULL)?"images.jpg":$archivoico;
+
 		        $params = array(
  	           	    ':utc'=> date('U'),
 		    	    ':anio'=> date('Y'),
@@ -28,7 +31,7 @@
 					':usuario' => $_POST['usuario'],
 					':titulo' => $_POST['titulo'],
 					':subtitulo' => $_POST['subtitulo'],
-					':icono' => $_POST['icono'],
+					':icono' => $archivoico,
 					':texto' => $_POST['texto'],
 					':imagen' => $_POST['imagen'],
 					':video' => $_POST['video'],
@@ -36,9 +39,7 @@
             	);
 
        // $query= "INSERT INTO Usuarios VALUES('".$nombres."', '".$apellidouno."','".$apellidodos."','".$direccion."','".$telefono."','".$estado."')";
-
 		$query = 'INSERT INTO posts (utc,anio,mes,dia,hora,minuto,segundo,usuario,titulo,subtitulo,icono,texto,imagen,video,sonido) VALUES (:utc,:anio,:mes,:dia,:hora,:minuto,:segundo,:usuario,:titulo,:subtitulo,:icono,:texto,:imagen,:video,:sonido)';
-
 
 		$result = excuteQuery("blogs","database/", $query, $params);
 		if ($result > 0){
@@ -49,7 +50,7 @@
 	}
 
 	function verposts (){
-		$query = "SELECT * FROM configusuarios";
+		$query = "SELECT * FROM posts";
 		$result = newQuery("blogs", "database/", $query);
 		if ($result != false || $result > 0){
 			foreach ($result as $value) {

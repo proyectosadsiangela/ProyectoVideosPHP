@@ -165,6 +165,11 @@
                                 <h3 class="panel-title"><i class="fa fa-users fa-fw"></i> Posts</h3>
                             </div>
                             <div class="panel-body">
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
                                 
                         <table id="grid-basic" class="table table-condensed table-hover table-striped" data-selection="true" data-multi-select="true" data-row-select="true">
                             <thead>

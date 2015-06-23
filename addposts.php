@@ -1,3 +1,5 @@
+<?php require_once "crudposts.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -193,16 +195,9 @@
                                 <input id="subtitulo"  name="subtitulo" class="form-control" placeholder="">
                                 <p class="help-block">Digite Subtitulo del Posts.</p>
                             </div>
-                             <div class="form-group">
-                                <label>Icono</label>
-                                 <form name="formSimple" id="formSimple" enctype="multipart/form-data" method="post" action="subirBasico.php" />
-                                 <p><input type="file" size="32" name="mi_archivo" value="" /></p>
-                                <p class="button"><input type="hidden" name="action" value="simple" />
-                                <input type="submit" name="Submit" value="Subir" /></p>
-                                </form>
-                              <!--  <input type="file" id="icono"  name="icono" class="form-control" placeholder="">
+                              <input type="file" id="icono"  name="icono" class="form-control" placeholder="">
                                 <p class="help-block">Seleccione un Icono.</p>
-                            </div>-->
+                            </div>
                              <div class="form-group">
                                 <label>texto</label>
                                 <input id="texto"  name="texto" class="form-control" placeholder="">
