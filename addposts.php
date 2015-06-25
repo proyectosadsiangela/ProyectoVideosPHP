@@ -195,6 +195,8 @@
                                 <input id="subtitulo"  name="subtitulo" class="form-control" placeholder="">
                                 <p class="help-block">Digite Subtitulo del Posts.</p>
                             </div>
+                            <div class="form-group">
+                              <label>Icono</label>
                               <input type="file" id="icono"  name="icono" class="form-control" placeholder="">
                                 <p class="help-block">Seleccione un Icono.</p>
                             </div>

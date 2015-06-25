@@ -147,7 +147,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Configuracion <small>de Usuarios</small>
+                            Configuracion <small>de Posts</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">

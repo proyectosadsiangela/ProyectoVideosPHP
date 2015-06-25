@@ -133,4 +133,26 @@
 	}
 	}
 
+
+	function subirimagen($imagen){
+		//Incluir la clase.
+	include('class.upload.php');
+	$archivos = new Upload($imagen);
+	if ($archivos->uploaded){
+		$archivos->file_new_name_body = $archivos->file_src_name_body;
+		$archivos->Process('archivos');
+		 $archivo->fille_src_pathname('micarpeta');
+		if($archivos->processed){
+			echo "Archivo Subido";
+			$archivos->Clean();
+			return $archivos;
+		}else{
+			echo "Archivo No Subido, Error en la carpeta..".$archivo->error;
+		}
+		$archivos->Clean();
+	}else{
+		echo "Error al subir el archivo...".$archivo->error;
+	}
+	}
+
 ?>
