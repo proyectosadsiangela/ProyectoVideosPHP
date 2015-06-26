@@ -1,6 +1,7 @@
 <?php
 session_start();
-	require_once("install.php");
+include("install.php");
+	/*require_once("install.php");
 		if (!empty($_REQUEST['action'])){
               	$accion = $_REQUEST['action'];
 
@@ -9,25 +10,26 @@ session_start();
 }
 }
 function validarlogin(){
- $params = array(
-			':usuario'=> $_POST['usuario'],
-			':contrasena'=> $_POST['contrasena'],
+ /*$params = array(
+			':usuarioenviado'=> $_POST['usuario'],
+			':contrasenaenviada'=> $_POST['contrasena'],
 				
-            );
+            );*/
 
 
-//$usuarioenviado = $_POST['usuario'];
-//$contrasenaenviada = $_POST['contrasena'];
+$usuarioenviado = $_POST['usuario'];
+$contrasenaenviada = $_POST['contrasena'];
      
-$query = "SELECT * FROM  Usuarios WHERE  Usuario='".$usuario."' AND Contrasena='".$contrasena."'" ;
+$query = "SELECT * FROM  Usuarios WHERE  Usuario='".$usuarioenviado."' AND Contrasena='".$contrasenaenviada."'" ;
 
-$result = excuteQuery("blogs","database/", $query, $params);
-		if ($result > 0){
-
+$result = newQuery("blogs","database/", $query);
+		if ($result != false || $result > 0){
+            	foreach ($result as $value) {
 			header('Location: viewUsers.php?result=true');
-		}else{
-			header('Location: index-rtl.html?result=false');
 		}
-}
+		}else{
+			header('Location: indexLogin.html?result=false');
+		}
 
+	
 ?>
