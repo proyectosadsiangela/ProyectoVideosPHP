@@ -119,7 +119,7 @@
 	if ($archivos->uploaded){
 		$archivos->file_new_name_body = $archivos->file_src_name_body;
 		$archivos->Process('archivos');
-		 $archivo->fille_src_pathname('micarpeta');
+		 $archivos->file_src_pathname('iconos');
 		if($archivos->processed){
 			echo "Archivo Subido";
 			$archivos->Clean();
@@ -133,15 +133,14 @@
 	}
 	}
 
-
-	function subirimagen($imagen){
+	/*function subirimagen($imagen){
 		//Incluir la clase.
 	include('class.upload.php');
 	$archivos = new Upload($imagen);
 	if ($archivos->uploaded){
-		$archivos->file_new_name_body = $archivos->file_src_name_body;
+		$archivos->$file_name_body_add = $archivos->image_src_type;
 		$archivos->Process('archivos');
-		 $archivo->fille_src_pathname('micarpeta');
+		 $archivo->$file_dst_pathname;('imagenes');
 		if($archivos->processed){
 			echo "Archivo Subido";
 			$archivos->Clean();
@@ -153,6 +152,6 @@
 	}else{
 		echo "Error al subir el archivo...".$archivo->error;
 	}
-	}
+	}*/
 
 ?>

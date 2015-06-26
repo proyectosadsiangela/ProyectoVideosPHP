@@ -17,8 +17,11 @@
 	}
 
 	function crearposts(){
-		$nom = $archivoico = subirarchivo('icono');
+		 $archivoico = subirarchivo('icono');
         $archivoico = ($archivoico === NULL)?"images.jpg":$archivoico;
+          
+      /*  $nomb = $archivoimag = subirimagen('imagen');
+        $archivoimag =($archivoimag === NULL)?"descarga.jpg":$archivoimag;*/
 
 		        $params = array(
  	           	    ':utc'=> date('U'),
@@ -33,7 +36,7 @@
 					':subtitulo' => $_POST['subtitulo'],
 					':icono' => $archivoico,
 					':texto' => $_POST['texto'],
-					':imagen' => $_POST['imagen'],
+					':imagen' => $archivoimag,
 					':video' => $_POST['video'],
 					':sonido' => $_POST['sonido']
             	);
@@ -145,7 +148,7 @@
 
 	function deleteposts(){
 
-		$idconfigusuarios = $_GET['idposts'];
+		$idposts = $_GET['id'];
 		$query = "DELETE FROM posts WHERE idposts ='".$idposts."';";
 		$result = excuteQuery("blogs", "database/", $query,$params);
 		if ($result > 0){
