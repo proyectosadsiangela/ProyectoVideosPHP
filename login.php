@@ -1,8 +1,8 @@
 <?php
 session_start();
-include("install.php");
-	/*require_once("install.php");
-		if (!empty($_REQUEST['action'])){
+//include("install.php");
+	require_once("install.php");
+		/*if (!empty($_REQUEST['action'])){
               	$accion = $_REQUEST['action'];
 
 		if($accion == 'login'){
@@ -28,7 +28,7 @@ $result = newQuery("blogs","database/", $query);
 			header('Location: viewUsers.php?result=true');
 		}
 		}else{
-			header('Location: indexLogin.html?result=false');
+			header('Location: index-rtl.html?result=false');
 		}
 
 	
